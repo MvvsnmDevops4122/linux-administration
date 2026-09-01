@@ -772,101 +772,49 @@ Sudo rules should reference the command path that actually exists on that system
 
 ---
 
-# 21. 🔍 `/etc/sudoers` vs `visudo` vs `/etc/sudoers.d/`
-
-This is an important interview topic.
-
-### `/etc/sudoers`
-
-```text
-/etc/sudoers
-      ↓
-     FILE
-      ↓
-Main sudo configuration
-```
-
-### `/etc/sudoers.d/`
-
-```text
-/etc/sudoers.d/
-      ↓
-  DIRECTORY
-      ↓
-Additional sudo configuration files
-```
-
-### `visudo`
-
-```text
-visudo
-   ↓
- COMMAND
-   ↓
-Safely edit / validate sudo configuration
-```
-
-### `sudo`
-
-```text
-sudo
-   ↓
- COMMAND
-   ↓
-Execute an allowed command with elevated privileges
-```
-
----
-
-# 🧠 Quick Revision
-
-## User Management Flow
-
-```text
-USER
- ↓
-GROUP
- ↓
-ROLE / RESPONSIBILITY
- ↓
-PERMISSIONS
- ↓
-SUDO
- ↓
-CONTROLLED ADMINISTRATIVE ACCESS
-```
-
-## ⭐ Core Commands
+# 🛠️ Essential User Management Commands
 
 ```bash
-useradd
-passwd
-id
-groupadd
-usermod
-userdel
-groupdel
+useradd <username>              # Create user
+passwd <username>               # Set/change password
+id <username>                   # Check user information
+whoami                          # Check current user
 
-sshd -t
-systemctl restart sshd
+groupadd <group-name>           # Create group
+getent group <group-name>       # Check group information
 
-visudo
-sudo
+usermod -g <group> <user>       # Change primary group
+usermod -aG <group> <user>      # Add secondary group
+
+userdel <username>              # Delete user
+userdel -r <username>           # Delete user + home directory
+groupdel <group-name>           # Delete group
+
+usermod -L <username>           # Lock user
+usermod -U <username>           # Unlock user
+````
+
+### 🔐 Essential Sudo & SSH Commands
+
+```bash
+sudo <command>                  # Run allowed command with sudo
+sudo -l                         # Check sudo permissions
+
+visudo                          # Safely edit/validate sudoers
+visudo -f /etc/sudoers.d/<file> # Edit a sudoers.d rule
+
+sshd -t                         # Validate SSH configuration
+systemctl restart sshd          # Restart SSH service
 ```
 
-## 🔐 Core Files
+### 📂 Essential User & Group Files
 
 ```text
-/etc/passwd
-/etc/shadow
-/etc/group
-/etc/gshadow
-/etc/sudoers
-/etc/sudoers.d/
-/etc/ssh/sshd_config
-```
-
-> **Golden Rule:** In production, give users only the permissions they need — no more, no less.
-
-```
+/etc/passwd                     → User information
+/etc/shadow                     → Password & aging information
+/etc/group                      → Group information
+/etc/gshadow                    → Secure group information
+/etc/sudoers                    → Main sudo configuration
+/etc/sudoers.d/                 → Additional sudo rules
+/etc/ssh/sshd_config            → SSH server configuration
 ```
