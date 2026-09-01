@@ -33,15 +33,3 @@ and real-world DevOps scenarios.
 | Packages | `yum`, `dnf`, `rpm` |
 | Logs | `journalctl`, `tail`, `less` |
 | SSH | `ssh`, `ssh-keygen`, `scp` |
-
-## 👤 User & Group Management
-
-Examples:
-
-```bash
-useradd ramesh
-passwd ramesh
-id ramesh
-
-groupadd devops
-usermod -aG devops ramesh
