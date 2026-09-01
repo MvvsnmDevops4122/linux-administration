@@ -1,9 +1,9 @@
 
-# 🐧 Linux User Management — DevOps Notes
+# 🐧 Linux User Management 
 
 ## 1. What is Linux User Management?
 
-Linux User Management means **creating, modifying, deleting, and managing users and groups and controlling their access to system resources.**
+Linux User Management means **creating, modifying, deleting, and managing users and groups and controlling their access on Linux system.**
 
 ### Main Components
 
