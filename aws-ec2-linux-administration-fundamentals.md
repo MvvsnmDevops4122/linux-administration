@@ -1,4 +1,3 @@
-````markdown
 # AWS EC2 & Linux Administration Fundamentals
 
 ## AWS Region
